@@ -1,0 +1,29 @@
+div.row
+  div.col-md-1
+
+  div.col-md-10
+    h1 Scrum Team
+
+    table.table.table-bordered.table-hover
+      thead.bg-info
+        tr
+          th First Name
+          th Last Name
+          th Role
+          th colspan="3" Action
+      tbody
+      - @employees.each do |employee|
+        tr
+          td #{employee.first_name}
+          td #{employee.last_name}
+          td #{employee.role.name}
+          td = link_to 'Show', employee_path(employee)
+          td = link_to 'Edit', edit_employee_path(employee)
+          td = link_to 'Delete', employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }
+
+    p
+      = link_to 'Add New Team Member', new_employee_path
+    p
+      = link_to 'Back', root_path
+
+  div.col-md-1

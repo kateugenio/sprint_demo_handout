@@ -1,0 +1,25 @@
+<h1>Stakeholders Review</h1>
+<h3>Sprint Timebox: <%= @results.first.Iteration.StartDate %> - <%= @results.first.Iteration.EndDate %></h3>
+<h3>Developers:</h3>
+<% @devs.each do |dev| %>
+  <p><%= dev.first_name %> <%= dev.last_name %></p>
+<% end %>
+<h3>Team Product Owner:</h3>
+<p><%= @tpo.first_name %> <%= @tpo.last_name %></p>
+<h3>Scrum Master:</h3>
+<p><%= @scrum_master.first_name %> <%= @scrum_master.last_name %></p>
+
+<h2>ACCEPTED STORIES</h2>
+<% @results.each do |s| %>
+  <p><% if s.ScheduleState == "Accepted" %><%= s.Name %><%= s.EndDate %><% end %></p>
+<% end %>
+
+<h2>STORIES IN PROGRESS</h2>
+<% @results.each do |us| %>
+  <p><% if us.ScheduleState != "Accepted" %><%= us.Name %> | | <%= us.FormattedID %> | <%= us.PlanEstimate %> | <%= us.c_Product %>| <%= us.Iteration %> | <%= us.ScheduleState %><% end %></p>
+<% end %>
+
+<input type="text" id="graph-link">
+<button id="graph-btn">Get Graph</button>
+
+<img id="graph-img">

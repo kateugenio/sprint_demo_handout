@@ -1,0 +1,85 @@
+div.row#main_handout
+  div.col-md-2
+
+  div.col-md-8
+    h1.handout-title.handout-heading Sprint Review Agenda
+    legend    
+    p.handout-heading 
+      span.label.label-info Sprint Timebox 
+      span.label.label-warning #{@start_date} - #{@end_date}
+    p.handout-heading  
+      span.label.label-info Percentage Completed
+      span.label.label-warning #{@percent_completed}%  
+    div.row.team
+      div.col-md-4
+        div.panel.panel-primary
+          div.panel-heading.dev-team 
+            h4 Development
+          div.panel-body
+            - if @devs.present?
+              - @devs.each do |dev|
+                p #{dev.first_name} #{dev.last_name}
+      div.col-md-4
+        div.panel.panel-primary
+          div.panel-heading.tpo
+            h4 Team Product Owner
+          div.panel-body
+            - if @tpo.present?
+              p #{@tpo.first_name} #{@tpo.last_name}
+      div.col-md-4
+        div.panel.panel-primary
+          div.panel-heading.scrummaster
+            h4 Scrum Master
+          div.panel-body
+            - if @scrum_master.present?
+              p #{@scrum_master.first_name} #{@scrum_master.last_name}
+
+    div.panel.panel-primary
+      div.panel-heading 
+        h4.headings Completed Stories
+      div.panel-body.panel-stories
+        table.table.table-bordered.table-condensed.completed
+          thead
+            tr
+              th Product
+              th User Story
+          tbody
+          - @results.each do |us|
+            - if us.ScheduleState == 'Accepted' && us.Name != 'Action Items'
+              tr.us_row     
+                td #{us.c_Product}
+                td #{us.Name}
+
+    div.panel.panel-primary
+      div.panel-heading
+        h4.headings Work In Progress
+      div.panel-body.panel-stories    
+        table.table.table-bordered.table-condensed.in_progress
+          thead
+            tr
+              th Product
+              th User Story
+          tbody
+          - @results.each do |us|
+            - if us.ScheduleState != 'Accepted' && us.Name != 'Action Items'
+              - if us.Name.include?('[Unfinished]')
+                - us.Name.remove!('[Unfinished]')
+              - if us.Name.include?('[Continued]')
+                - us.Name.remove!('[Continued]')
+              tr
+                td #{us.c_Product}
+                td #{us.Name}
+
+    div.graph
+      = form_tag('/handout/graph_link', remote: true) do
+        = text_field_tag "graphlink"
+        = submit_tag 'Get Graph', class: 'graph-submit'      
+      
+      div
+        img#graph-img
+   
+    div#pdf
+      button.btn.btn-success#link_to_graph
+        = link_to 'Export to PDF', handout_path(:sprint_num => @sprint, :format => :pdf)
+      
+  div.col-md-2

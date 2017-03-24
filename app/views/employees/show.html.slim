@@ -1,0 +1,17 @@
+div.row
+  div.col-md-3
+
+  div.col-md-6
+    p
+      strong First Name: #{@employee.first_name}
+    p
+      strong Last Name: #{@employee.last_name}
+    p
+      strong Role: #{@employee.role.name}
+
+    p
+      = link_to 'Edit', edit_employee_path(@employee)
+    p
+      = link_to 'Back', employees_path
+
+  div.col-md-3

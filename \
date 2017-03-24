@@ -1,0 +1,28 @@
+class HandoutController < ApplicationController
+
+  require 'rally_api'
+  require 'pp'
+
+  def index
+  end
+
+  def connect_to_rally
+    rally = RallyAPI::RallyRestJson.new(Rails.configuration.rally)
+    #query = RallyAPI::RallyQuery.new()
+    #query.type = "requirement"
+    #query.fetch = "Name,Iteration"
+    #query.limit = 5
+    #query.page_size = 2
+    #query.order = "Name Asc"
+
+    sprint = 2
+    
+    results = rally.find(RallyAPI::RallyQuery.new({:type => :requirement, :query_string => "(ObjectID = " + sprint.to_s() + ")", :fetch => "Name"}))
+    puts "MY RESULTS ARE: #{results.Name}"
+    #@results = rally.find(query)
+    #@results.each do |us|
+     # puts "HERE ARE MY USER STORIES #{us.Iteration}, #{us.Name}"
+    #end
+  end
+
+end

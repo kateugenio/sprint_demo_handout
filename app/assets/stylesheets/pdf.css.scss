@@ -1,0 +1,34 @@
+
+#test { color: red }
+
+.pdf_handout_heading {
+  text-align: center
+}
+.pdf_handout_title {
+  font-family: Lobster;
+  font-size: 3em;
+  color: #009999;
+  text-shadow: 2px 2px #595959
+}
+.pdf_handout_headings {
+} 
+p {
+  font-size: 0.6em;
+}
+h4 {
+  font-size: 0.8em;
+}
+h3 {
+  font-size: 1em;
+}
+table {
+  font-size: 0.6em;
+}
+
+
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@include make-grid(sm);
+@include make-grid(md);
+@include make-grid(lg);

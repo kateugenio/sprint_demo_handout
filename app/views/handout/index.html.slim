@@ -1,0 +1,23 @@
+div.row
+
+  div.col-md-12#main_index
+
+    h1#logo 
+      strong SCRUMy
+
+    div.col-md-5
+    
+    div.col-md-2
+      = form_tag("/handout", method: "get") do
+        div.form-group#sprint_select_form
+          = label_tag "select a sprint"
+          = select_tag "sprint_num", options_for_select(@results.map { |s| [s.Name, s.Name] }), class: "form-control"
+
+        p
+          = submit_tag 'Create Demo Agenda', class: "btn btn-primary"
+
+    
+    div.col-md-5
+
+div.row#team_link
+  = link_to 'View/Edit Team Members', employees_path

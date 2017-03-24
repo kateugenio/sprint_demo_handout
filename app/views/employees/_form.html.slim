@@ -1,0 +1,25 @@
+= form_for @employee do |f|
+  - if @employee.errors.any?
+    div#error_explanation
+      h2
+        = pluralize(@employee.errors.count, "error")
+        |  prohibited this employee from being saved
+
+      ul
+        - @employee.errors.full_messages.each do |error|
+          li #{error}
+
+  div.form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: "form-control"
+
+  div.form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: "form-control"
+
+  div.form-group
+    = f.label :role
+    = f.collection_select(:role_id, Role.all, :id, :name, class: "form-control")
+
+  p
+    = submit_tag 'Create', class: "btn btn-primary"

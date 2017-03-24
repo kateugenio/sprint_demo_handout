@@ -1,0 +1,74 @@
+// Place all the styles related to the handout controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#logo {
+  color: #000000;
+  font-family: Maven Pro;
+  font-size: 6em;
+  margin-top:60px;
+  letter-spacing: 7px
+}
+#main_index {
+  text-align: center;
+  height: 100vh;
+  font-family: Maven Pro;
+  background: url(confroom.jpg) no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.8
+}
+#sprint_select_form {
+  margin-top: 15px
+}
+#team_link {
+  text-align: center;
+  padding: 25px
+}
+.sprint_select {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  margin-top: 10px
+}
+.dev-team, .tpo, .scrummaster { }
+.team {
+  text-align: center
+}
+.team p {
+  color: #FFFFFF
+}
+.panel-body {
+  background-color: #595959;
+}
+.panel-stories {
+  background-color: #FFFFFF
+}
+.handout-heading {
+  text-align: center
+}
+.handout-title {
+  font-family: Lobster;
+  font-size: 5em;
+  color: #009999;
+  text-shadow: 2px 2px #595959
+}
+.label.label-info {
+  background-color: #595959
+}
+.label.label-warning {
+  background-color: #009999
+}
+.headings {
+  letter-spacing: 5px;
+  word-spacing: 2px
+}
+.graph {
+  text-align: center
+}
+#pdf {
+  text-align: center
+}
+#link_to_graph a {
+  color: #FFFFFF
+}
+
