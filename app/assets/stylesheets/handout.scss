@@ -37,30 +37,58 @@
 .team p {
   color: #FFFFFF
 }
-.panel-body {
-  background-color: #595959;
+.panel {
+  margin-top: 50px;
 }
-.panel-stories {
-  background-color: #FFFFFF
+.panel-primary>.panel-heading {
+  background-color: #34495e !important;
+  border-color: none;
+  #letter-spacing: 3px;
+  #word-spacing: 1px;
+}
+#handout-main {
+  margin-top: 20px;
+  #font-family: Comfortaa;
 }
 .handout-heading {
-  text-align: center
+  text-align: left
 }
 .handout-title {
-  font-family: Lobster;
-  font-size: 5em;
-  color: #009999;
-  text-shadow: 2px 2px #595959
+  font-family: Comfortaa;
+  font-size: 4em;
+  margin: 0;
+  letter-spacing: 2px;
+}
+legend {
+  margin: 0;
+}
+.label-key {
+  padding: 4px;
+  background-color: #34495e;
+  color: #FFFFFF;
+  border-radius: 3px 0 0 3px
+}
+.label-value {
+  padding: 4px;
+  background-color: #c0392b;
+  color: #FFFFFF;
+  border-radius: 0 3px 3px 0;
+}
+.handout-intro {
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+.handout-metrics {
+  text-align: left;
+}
+.handout-team {
+  text-align: right;
 }
 .label.label-info {
   background-color: #595959
 }
 .label.label-warning {
   background-color: #009999
-}
-.headings {
-  letter-spacing: 5px;
-  word-spacing: 2px
 }
 .graph {
   text-align: center
@@ -71,4 +99,7 @@
 #link_to_graph a {
   color: #FFFFFF
 }
-
+#home {
+  text-align: center;
+  margin-top: 20px;
+}

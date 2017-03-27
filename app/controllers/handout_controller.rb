@@ -53,7 +53,7 @@ class HandoutController < ApplicationController
       format.pdf do
         render pdf: 'get_sprint',
                viewport_size: '1280x1024',
-               template: 'handout/get_sprint.pdf.erb',
+               template: 'handout/handout.pdf.erb',
                locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
       end
     end

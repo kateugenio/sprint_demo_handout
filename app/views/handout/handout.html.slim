@@ -1,74 +1,70 @@
 div.row#main_handout
   div.col-md-2
 
-  div.col-md-8
+  div.col-md-8#handout-main
     h1.handout-title.handout-heading Sprint Review Agenda
     legend    
-    p.handout-heading 
-      span.label.label-info Sprint Timebox 
-      span.label.label-warning #{@start_date} - #{@end_date}
-    p.handout-heading  
-      span.label.label-info Percentage Completed
-      span.label.label-warning #{@percent_completed}%  
-    div.row.team
-      div.col-md-4
-        div.panel.panel-primary
-          div.panel-heading.dev-team 
-            h4 Development
-          div.panel-body
-            - if @devs.present?
-              - @devs.each do |dev|
-                p #{dev.first_name} #{dev.last_name}
-      div.col-md-4
-        div.panel.panel-primary
-          div.panel-heading.tpo
-            h4 Team Product Owner
-          div.panel-body
-            - if @tpo.present?
-              p #{@tpo.first_name} #{@tpo.last_name}
-      div.col-md-4
-        div.panel.panel-primary
-          div.panel-heading.scrummaster
-            h4 Scrum Master
-          div.panel-body
-            - if @scrum_master.present?
-              p #{@scrum_master.first_name} #{@scrum_master.last_name}
+   
+    div.row.handout-intro
+      div.col-md-4.handout-metrics
+        p.handout-heading 
+        span.label-key Sprint Timebox 
+        span.label-value #{@start_date} - #{@end_date}
+        p.handout-heading  
+        span.label-key Percentage Completed
+        span.label-value #{@percent_completed}%  
+      div.col-md-8.handout-team
+        p
+          span.label-key Developers
+          - if @devs.present?
+            - @devs.each do |dev|
+              span.label-value #{dev.first_name} #{dev.last_name}
+        p
+          span.label-key Team Product Owner
+          - if @tpo.present?
+            span.label-value #{@tpo.first_name} #{@tpo.last_name}
+        p
+          span.label-key Scrum Master
+          - if @scrum_master.present?
+            span.label-value #{@scrum_master.first_name} #{@scrum_master.last_name}
 
     div.panel.panel-primary
-      div.panel-heading 
-        h4.headings Completed Stories
-      div.panel-body.panel-stories
-        table.table.table-bordered.table-condensed.completed
-          thead
-            tr
-              th Product
-              th User Story
-          tbody
-          - @results.each do |us|
-            - if us.ScheduleState == 'Accepted' && us.Name != 'Action Items'
-              tr.us_row     
-                td #{us.c_Product}
-                td #{us.Name}
+      div.panel-heading Completed Stories
+      div.panel-body
+      table.table.table-bordered.table-condensed.completed
+        thead
+          tr
+            th Product
+            th User Story
+        tbody
+        - @results.each do |us|
+          - if us.ScheduleState == 'Accepted' && us.Name != 'Action Items'
+            - if us.Name.include?('[Unfinished]')
+              - us.Name.remove!('[Unfinished]')
+            - if us.Name.include?('[Continued]')
+              - us.Name.remove!('[Continued]')
+            tr.us_row     
+              td #{us.c_Product}
+              td #{us.Name}
 
     div.panel.panel-primary
-      div.panel-heading
-        h4.headings Work In Progress
-      div.panel-body.panel-stories    
-        table.table.table-bordered.table-condensed.in_progress
-          thead
+      div.panel-heading Work In Progress
+      div.panel-body    
+      table.table.table-bordered.table-condensed.in_progress
+        thead
+          tr
+            th Product
+            th User Story
+        tbody
+        - @results.each do |us|
+          - if us.ScheduleState != 'Accepted' && us.Name != 'Action Items'
+            - if us.Name.include?('[Unfinished]')
+              - us.Name.remove!('[Unfinished]')
+            - if us.Name.include?('[Continued]')
+              - us.Name.remove!('[Continued]')
             tr
-              th Product
-              th User Story
-          tbody
-          - @results.each do |us|
-            - if us.ScheduleState != 'Accepted' && us.Name != 'Action Items'
-              - if us.Name.include?('[Unfinished]')
-                - us.Name.remove!('[Unfinished]')
-              - if us.Name.include?('[Continued]')
-                - us.Name.remove!('[Continued]')
-              tr
-                td #{us.c_Product}
-                td #{us.Name}
+              td #{us.c_Product}
+              td #{us.Name}
 
     div.graph
       = form_tag('/handout/graph_link', remote: true) do
@@ -81,5 +77,7 @@ div.row#main_handout
     div#pdf
       button.btn.btn-success#link_to_graph
         = link_to 'Export to PDF', handout_path(:sprint_num => @sprint, :format => :pdf)
-      
+    
+    p#home
+      = link_to 'Home', root_path  
   div.col-md-2

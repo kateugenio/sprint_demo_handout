@@ -1,2 +1,92 @@
-<h1 style="color: red">test</h1>
-<p><%= @tpo %></p>
+<%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+<%= javascript_include_tag 'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lobster' %>
+<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Comfortaa' %>
+<%= wicked_pdf_stylesheet_link_tag 'application.css' %>
+<%= wicked_pdf_stylesheet_link_tag 'pdf.css' %>
+<%= wicked_pdf_javascript_include_tag 'graph' %>
+
+
+<h1 class="pdf_handout_title pdf_handout_heading">Sprint Review Agenda</h1>
+<legend></legend>
+
+<div class="row handout-intro">
+  <div class="col-md-4 handout-metrics">
+    <p class="pdf_handout_heading"><span class="label-key">Sprint Timebox</span><span class="label-value"><%= @start_date %> - <%= @end_date %></span></p>
+    <p class="pdf_handout_heading"><span class="label-key">Percentage Completed</span><span class="label-value"><%= @percent_completed %>%</span></p>
+  </div>
+
+  <div class="col-md-8 handout-team">
+    <p><span class="label-key">Development</span><% if @devs.present? %><% @devs.each do |dev| %><span class="label-value"><%= dev.first_name %> <%= dev.last_name %></span><% end %><% end %></p>
+    <p><span class="label-key">Team Product Owner</span><% if @tpo.present? %><span class="label-value"><%= @tpo.first_name %> <%= @tpo.last_name %></span><% end %></p>
+    <p><span class="label-key">Scrum Master</span><% if @scrum_master.present? %><span class="label-value"><%= @scrum_master.first_name %> <%= @scrum_master.last_name %></span><% end %></p>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Completed Stories</div>
+  <div class="panel-body">
+  </div>
+  <table class="table table-bordered table-condensed completed">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>User Story</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @results.each do |us| %>
+      <% if us.ScheduleState === 'Accepted' && us.Name != 'Action Items' %>
+        <% if us.Name.include?('[Unfinished]') %>
+          <% us.Name.remove!('[Unfinished]') %>
+        <% end %>
+        <% if us.Name.include?('[Continued]') %>
+          <% us.Name.remove!('[Continued]') %>
+        <% end %>
+        <tr>
+          <td><%= us.c_Product %></td>
+          <td><%= us.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Work In Progress</div>
+  <div class="panel-body">
+  </div>
+  <table class="table table-bordered table-condensed in_progress">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>User Story</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @results.each do |us| %>
+      <% if us.ScheduleState != 'Accepted' && us.Name != 'Action Items' %>
+        <% if us.Name.include?('[Unfinished]') %>
+          <% us.Name.remove!('Unfinished]') %>
+        <% end %>
+        <% if us.Name.include?('[Continued]') %>
+          <% us.Name.remove!('[Continued]') %>
+        <% end %>
+        <tr>
+          <td><%= us.c_Product %></td>
+          <td><%= us.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="graph alwaysbreak">
+  <h3>Iteration Cumulative Flow Diagram for <%= @sprint %></h3>
+  <img src=<%= @graph_link.link %>>
+</div>
+
