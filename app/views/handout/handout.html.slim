@@ -75,8 +75,7 @@ div.row#main_handout
         img#graph-img
    
     div#pdf
-      button.btn.btn-success#link_to_graph
-        = link_to 'Export to PDF', handout_path(:sprint_num => @sprint, :format => :pdf)
+      = link_to 'Export to PDF', handout_path(:sprint_num => @sprint, :format => :pdf), class: "btn btn-primary"
     
     p#home
       = link_to 'Home', root_path  
