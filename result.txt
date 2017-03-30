@@ -1,0 +1,434 @@
+Inspecting 55 files
+.CCCCCCCCC.CCC...CCCCCC...CC.C....C.C...C...CCC...CCCCC
+
+Offenses:
+
+Gemfile:4:69: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+                                                                    ^^^
+Gemfile:8:1: C: Extra blank line detected.
+Gemfile:48:81: C: Line is too long. [83/80]
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+                                                                                ^^^
+Gemfile:53:81: C: Line is too long. [93/80]
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+                                                                                ^^^^^^^^^^^^^
+Gemfile:55:3: C: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem listen should appear before web-console.
+  gem 'listen', '~> 3.0.5'
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+Gemfile:56:81: C: Line is too long. [130/80]
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Rakefile:2:81: C: Line is too long. [90/80]
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+                                                                                ^^^^^^^^^^
+app/mailers/application_mailer.rb:1:1: C: Missing top-level class documentation comment.
+class ApplicationMailer < ActionMailer::Base
+^^^^^
+app/controllers/application_controller.rb:1:1: C: Missing top-level class documentation comment.
+class ApplicationController < ActionController::Base
+^^^^^
+app/controllers/handout_controller.rb:1:1: C: Missing top-level class documentation comment.
+class HandoutController < ApplicationController
+^^^^^
+app/controllers/handout_controller.rb:2:1: C: Extra empty line detected at class body beginning.
+app/controllers/handout_controller.rb:8:37: C: Do not use parentheses for method calls with no arguments.
+    query = RallyAPI::RallyQuery.new()
+                                    ^
+app/controllers/handout_controller.rb:9:18: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.type = "Iteration"
+                 ^^^^^^^^^^^
+app/controllers/handout_controller.rb:10:19: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.fetch = "Name,ObjectID"
+                  ^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:11:21: C: Space inside { missing.
+    query.project = {"_ref" => "https://rally1.rallydev.com/slm/webservice/v2.0/project/19878958295"}
+                    ^
+app/controllers/handout_controller.rb:11:22: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.project = {"_ref" => "https://rally1.rallydev.com/slm/webservice/v2.0/project/19878958295"}
+                     ^^^^^^
+app/controllers/handout_controller.rb:11:32: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.project = {"_ref" => "https://rally1.rallydev.com/slm/webservice/v2.0/project/19878958295"}
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:11:100: C: Line is too long. [101/80]
+    query.project = {"_ref" => "https://rally1.rallydev.com/slm/webservice/v2.0/project/19878958295"}
+                                                                                                   ^^
+app/controllers/handout_controller.rb:11:101: C: Space inside } missing.
+    query.project = {"_ref" => "https://rally1.rallydev.com/slm/webservice/v2.0/project/19878958295"}
+                                                                                                    ^
+app/controllers/handout_controller.rb:12:19: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.order = "ObjectID Desc"
+                  ^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:16:3: C: Assignment Branch Condition size for show is too high. [47.51/15]
+  def show
+  ^^^
+app/controllers/handout_controller.rb:16:3: C: Method has too many lines. [37/10]
+  def show ...
+  ^^^^^^^^
+app/controllers/handout_controller.rb:21:37: C: Do not use parentheses for method calls with no arguments.
+    query = RallyAPI::RallyQuery.new()
+                                    ^
+app/controllers/handout_controller.rb:22:18: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.type = "HierarchicalRequirement"
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:23:19: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.fetch = "Name,Iteration,PlanEstimate,ScheduleState,c_Product,FormattedID,StartDate,EndDate"
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:23:81: C: Line is too long. [101/80]
+    query.fetch = "Name,Iteration,PlanEstimate,ScheduleState,c_Product,FormattedID,StartDate,EndDate"
+                                                                                ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:24:52: C: Favor format over String#%.
+    query.query_string = '(Iteration.Name = "%s")' % [@sprint]
+                                                   ^
+app/controllers/handout_controller.rb:25:19: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    query.order = "c_Product Asc"
+                  ^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:26:33: C: Trailing whitespace detected.
+    @results = rally.find(query)     
+                                ^^^^^
+app/controllers/handout_controller.rb:31:34: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      if (res.ScheduleState.eql? "Accepted") && (res.PlanEstimate != nil)
+                                 ^^^^^^^^^^
+app/controllers/handout_controller.rb:31:67: C: Prefer !expression.nil? over expression != nil.
+      if (res.ScheduleState.eql? "Accepted") && (res.PlanEstimate != nil)
+                                                                  ^^
+app/controllers/handout_controller.rb:34:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+      if res.PlanEstimate != nil
+      ^^
+app/controllers/handout_controller.rb:34:27: C: Prefer !expression.nil? over expression != nil.
+      if res.PlanEstimate != nil
+                          ^^
+app/controllers/handout_controller.rb:38:43: C: Surrounding space missing for operator /.
+    @percent_completed = ((accepted_points/total_points) * 100).ceil.to_i
+                                          ^
+app/controllers/handout_controller.rb:40:75: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    @start_date = Date.parse(@results.first.Iteration.StartDate).strftime("%m/%d/%Y")
+                                                                          ^^^^^^^^^^
+app/controllers/handout_controller.rb:40:81: C: Line is too long. [85/80]
+    @start_date = Date.parse(@results.first.Iteration.StartDate).strftime("%m/%d/%Y")
+                                                                                ^^^^^
+app/controllers/handout_controller.rb:42:36: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    @end_date = @end_date.strftime("%m/%d/%Y")    
+                                   ^^^^^^^^^^
+app/controllers/handout_controller.rb:42:47: C: Trailing whitespace detected.
+    @end_date = @end_date.strftime("%m/%d/%Y")    
+                                              ^^^^
+app/controllers/handout_controller.rb:46:1: C: Trailing whitespace detected.
+app/controllers/handout_controller.rb:55:24: C: Space inside { missing.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                       ^
+app/controllers/handout_controller.rb:55:25: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                        ^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:47: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                              ^^^^^^^^^^
+app/controllers/handout_controller.rb:55:67: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                  ^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:81: C: Line is too long. [249/80]
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:95: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                              ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:137: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                                                                        ^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:165: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                                                                                                    ^^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:189: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                                                                                                                            ^^^^^^^^
+app/controllers/handout_controller.rb:55:205: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                                                                                                                                            ^^^^^^^
+app/controllers/handout_controller.rb:55:219: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^
+app/controllers/handout_controller.rb:55:249: C: Space inside } missing.
+               locals: {:results => @results, :sprint => @sprint, :graph_link => @graph_link, :percent_completed => @percent_completed, :start_date => @start_date, :end_date => @end_date, :devs => @devs, :tpo => @tpo, :scrum_master => @scrum_master}
+                                                                                                                                                                                                                                                        ^
+app/controllers/handout_controller.rb:64:1: C: Extra empty line detected at class body end.
+app/controllers/employees_controller.rb:1:1: C: Missing top-level class documentation comment.
+class EmployeesController < ApplicationController
+^^^^^
+app/controllers/employees_controller.rb:11:21: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        render pdf: "show_employee",
+                    ^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:12:24: C: Space inside { missing.
+               locals: {:employee => @employee}
+                       ^
+app/controllers/employees_controller.rb:12:25: C: Use the new Ruby 1.9 hash syntax.
+               locals: {:employee => @employee}
+                        ^^^^^^^^^^^^
+app/controllers/employees_controller.rb:12:47: C: Space inside } missing.
+               locals: {:employee => @employee}
+                                              ^
+app/controllers/employees_controller.rb:51:1: C: Trailing whitespace detected.
+app/controllers/employees_controller.rb:55:1: C: Extra empty line detected at class body end.
+app/helpers/application_helper.rb:1:1: C: Missing top-level module documentation comment.
+module ApplicationHelper
+^^^^^^
+app/helpers/handout_helper.rb:1:1: C: Missing top-level module documentation comment.
+module HandoutHelper
+^^^^^^
+app/helpers/employees_helper.rb:1:1: C: Missing top-level module documentation comment.
+module EmployeesHelper
+^^^^^^
+app/models/employee.rb:1:1: C: Missing top-level class documentation comment.
+class Employee < ApplicationRecord
+^^^^^
+app/models/employee.rb:3:1: C: Trailing whitespace detected.
+app/models/employee.rb:5:16: C: Use the new Ruby 1.9 hash syntax.
+  with_options :if => :tpo? do |role|
+               ^^^^^^
+app/models/employee.rb:8:16: C: Use the new Ruby 1.9 hash syntax.
+  with_options :if => :sm? do |role|
+               ^^^^^^
+app/models/employee.rb:21:5: C: Use a guard clause instead of wrapping the code inside a conditional expression.
+    if Employee.where(role_id: '2').exists?
+    ^^
+app/models/employee.rb:22:24: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      errors[:base] << "Team Product Owner already exists. Please change the role or remove the current Team Product Owner to add new team member."
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/employee.rb:22:81: C: Line is too long. [147/80]
+      errors[:base] << "Team Product Owner already exists. Please change the role or remove the current Team Product Owner to add new team member."
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/employee.rb:27:5: C: Use a guard clause instead of wrapping the code inside a conditional expression.
+    if Employee.where(role_id: '3').exists?
+    ^^
+app/models/employee.rb:28:24: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      errors[:base] << "Scrum Master already exists. Please change the role or remove the current Scrum Master to add new team member."
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/employee.rb:28:81: C: Line is too long. [135/80]
+      errors[:base] << "Scrum Master already exists. Please change the role or remove the current Scrum Master to add new team member."
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/employee.rb:31:1: C: Extra empty line detected at class body end.
+app/models/application_record.rb:1:1: C: Missing top-level class documentation comment.
+class ApplicationRecord < ActiveRecord::Base
+^^^^^
+app/models/role.rb:1:1: C: Missing top-level class documentation comment.
+class Role < ApplicationRecord
+^^^^^
+config/routes.rb:2:22: C: Trailing whitespace detected.
+  get 'handout/index' 
+                     ^
+config/routes.rb:5:1: C: Trailing whitespace detected.
+config/environments/production.rb:2:81: C: Line is too long. [85/80]
+  # Settings specified here will take precedence over those in config/application.rb.
+                                                                                ^^^^^
+config/environments/production.rb:28:81: C: Line is too long. [102/80]
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:40:81: C: Line is too long. [96/80]
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+                                                                                ^^^^^^^^^^^^^^^^
+config/environments/production.rb:42:81: C: Line is too long. [96/80]
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+                                                                                ^^^^^^^^^^^^^^^^
+config/environments/production.rb:50:22: C: Space inside square brackets detected.
+  config.log_tags = [ :request_id ]
+                     ^
+config/environments/production.rb:50:34: C: Space inside square brackets detected.
+  config.log_tags = [ :request_id ]
+                                 ^
+config/environments/production.rb:55:81: C: Line is too long. [83/80]
+  # Use a real queuing backend for Active Job (and separate queues per environment)
+                                                                                ^^^
+config/environments/production.rb:61:81: C: Line is too long. [100/80]
+  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+                                                                                ^^^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:76:81: C: Line is too long. [83/80]
+  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+                                                                                ^^^
+config/environments/production.rb:78:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+         ^^^^^^^^^^^^^^^^^^^^^
+config/environments/test.rb:2:81: C: Line is too long. [85/80]
+  # Settings specified here will take precedence over those in config/application.rb.
+                                                                                ^^^^^
+config/environments/development.rb:2:81: C: Line is too long. [85/80]
+  # Settings specified here will take precedence over those in config/application.rb.
+                                                                                ^^^^^
+config/environments/development.rb:55:18: C: Space inside { missing.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                 ^
+config/environments/development.rb:55:19: C: Use the new Ruby 1.9 hash syntax.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                  ^^^^^^^^^^^^
+config/environments/development.rb:55:32: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/environments/development.rb:55:67: C: Use the new Ruby 1.9 hash syntax.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                                                                  ^^^^^^^^^^^
+config/environments/development.rb:55:81: C: Line is too long. [228/80]
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/environments/development.rb:55:120: C: Use the new Ruby 1.9 hash syntax.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                                                                                                                       ^^^^^^^^^^^^^
+config/environments/development.rb:55:177: C: Use the new Ruby 1.9 hash syntax.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                                                                                                                                                                                ^^^^^^^^^^^
+config/environments/development.rb:55:228: C: Space inside } missing.
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+                                                                                                                                                                                                                                   ^
+config/initializers/session_store.rb:3:81: C: Line is too long. [83/80]
+Rails.application.config.session_store :cookie_store, key: '_rally_handout_session'
+                                                                                ^^^
+config/initializers/assets.rb:10:81: C: Line is too long. [93/80]
+# application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+                                                                                ^^^^^^^^^^^^^
+config/initializers/assets.rb:15:50: C: Do not use spaces inside percent literal delimiters.
+Rails.application.config.assets.precompile += %w( graph.js )
+                                                 ^
+config/initializers/assets.rb:15:59: C: Do not use spaces inside percent literal delimiters.
+Rails.application.config.assets.precompile += %w( graph.js )
+                                                          ^
+config/initializers/assets.rb:16:1: C: Missing space after #.
+#Rails.application.config.assets.precompile += %w( handout.css )
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/backtrace_silencers.rb:3:81: C: Line is too long. [107/80]
+# You can add backtrace silencers for libraries that you're using but don't wish to see in your backtraces.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/backtrace_silencers.rb:6:81: C: Line is too long. [112/80]
+# You can also remove all the silencers if you're trying to debug a problem that might stem from framework code.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/new_framework_defaults.rb:11:81: C: Line is too long. [81/80]
+Rails.application.config.action_controller.forgery_protection_origin_check = true
+                                                                                ^
+config/initializers/new_framework_defaults.rb:20:81: C: Line is too long. [88/80]
+# Do not halt callback chains when a callback returns false. Previous versions had true.
+                                                                                ^^^^^^^^
+config/initializers/new_framework_defaults.rb:23:81: C: Line is too long. [84/80]
+# Configure SSL options to enable HSTS with subdomains. Previous versions had false.
+                                                                                ^^^^
+config/initializers/wrap_parameters.rb:6:81: C: Line is too long. [96/80]
+# Enable parameter wrapping for JSON. You can disable this by setting :format to an empty array.
+                                                                                ^^^^^^^^^^^^^^^^
+config/puma.rb:7:27: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
+                          ^^^^^^^^^^^^^^^^^^^
+config/puma.rb:10:81: C: Line is too long. [85/80]
+# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+                                                                                ^^^^^
+config/puma.rb:12:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+port        ENV.fetch("PORT") { 3000 }
+                      ^^^^^^
+config/puma.rb:16:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+environment ENV.fetch("RAILS_ENV") { "development" }
+                      ^^^^^^^^^^^
+config/puma.rb:16:38: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+environment ENV.fetch("RAILS_ENV") { "development" }
+                                     ^^^^^^^^^^^^^
+config/application.rb:10:3: C: Missing top-level class documentation comment.
+  class Application < Rails::Application
+  ^^^^^
+config/application.rb:11:81: C: Line is too long. [82/80]
+    # Settings in config/environments/* take precedence over those specified here.
+                                                                                ^^
+config/application.rb:14:24: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    config.time_zone = "Pacific Time (US & Canada)"
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/spring:11:56: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  spring = lockfile.specs.detect { |spec| spec.name == "spring" }
+                                                       ^^^^^^^^
+test/test_helper.rb:5:7: C: Use nested module/class definitions instead of compact style.
+class ActiveSupport::TestCase
+      ^^^^^^^^^^^^^^^^^^^^^^^
+test/test_helper.rb:6:81: C: Line is too long. [82/80]
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+                                                                                ^^
+test/controllers/employees_controller_test.rb:4:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get index" do
+       ^^^^^^^^^^^^^^^^^^
+test/controllers/employees_controller_test.rb:8:1: C: Extra empty line detected at class body end.
+test/controllers/handout_controller_test.rb:4:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get index" do
+       ^^^^^^^^^^^^^^^^^^
+test/controllers/handout_controller_test.rb:8:1: C: Extra empty line detected at class body end.
+db/migrate/20170321043719_create_graphs.rb:1:1: C: Missing top-level class documentation comment.
+class CreateGraphs < ActiveRecord::Migration[5.0]
+^^^^^
+db/migrate/20170307031347_create_employees.rb:1:1: C: Missing top-level class documentation comment.
+class CreateEmployees < ActiveRecord::Migration[5.0]
+^^^^^
+db/migrate/20170307030732_create_roles.rb:1:1: C: Missing top-level class documentation comment.
+class CreateRoles < ActiveRecord::Migration[5.0]
+^^^^^
+db/schema.rb:3:81: C: Line is too long. [81/80]
+# incrementally modify your database, and then regenerate this schema definition.
+                                                                                ^
+db/schema.rb:8:81: C: Line is too long. [86/80]
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+                                                                                ^^^^^^
+db/schema.rb:11:81: C: Line is too long. [86/80]
+# It's strongly recommended that you check this file into your version control system.
+                                                                                ^^^^^^
+db/schema.rb:13:38: C: Separate every 3 digits in the integer portion of a number with underscores(_).
+ActiveRecord::Schema.define(version: 20170321043719) do
+                                     ^^^^^^^^^^^^^^
+db/schema.rb:14:1: C: Extra empty line detected at block body beginning.
+db/schema.rb:15:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "employees", force: :cascade do |t|
+               ^^^^^^^^^^^
+db/schema.rb:16:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "first_name"
+               ^^^^^^^^^^^^
+db/schema.rb:17:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "last_name"
+               ^^^^^^^^^^^
+db/schema.rb:18:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer  "role_id"
+               ^^^^^^^^^
+db/schema.rb:19:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:20:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:21:14: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.index ["role_id"], name: "index_employees_on_role_id"
+             ^^^^^^^^^
+db/schema.rb:21:32: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.index ["role_id"], name: "index_employees_on_role_id"
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:24:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "graphs", force: :cascade do |t|
+               ^^^^^^^^
+db/schema.rb:25:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.text     "link"
+               ^^^^^^
+db/schema.rb:26:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:27:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:30:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "roles", force: :cascade do |t|
+               ^^^^^^^
+db/schema.rb:31:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "name"
+               ^^^^^^
+db/schema.rb:32:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:33:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:35:1: C: Extra empty line detected at block body end.
+db/seeds.rb:1:81: C: Line is too long. [103/80]
+# This file should contain all the record creation needed to seed the database with its default values.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^
+db/seeds.rb:2:81: C: Line is too long. [111/80]
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/seeds.rb:6:81: C: Line is too long. [81/80]
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+                                                                                ^
+
+55 files inspected, 151 offenses detected

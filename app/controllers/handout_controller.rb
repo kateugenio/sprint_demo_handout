@@ -1,29 +1,18 @@
 class HandoutController < ApplicationController
 
-  require 'rally_api'
   require 'pp'
 
-  def index
-    rally = RallyAPI::RallyRestJson.new(Rails.configuration.rally)
-    query = RallyAPI::RallyQuery.new()
-    query.type = "Iteration"
-    query.fetch = "Name,ObjectID"
-    query.project = {"_ref" => "https://rally1.rallydev.com/slm/webservice/v2.0/project/19878958295"}
-    query.order = "ObjectID Desc"
-    @results = rally.find(query)
+  def index 
+    rally = Rally.new()
+    @results = rally.get_all_sprints
   end
 
   def show
     @sprint = params[:sprint_num]
     @graph_link = Graph.find(1)
 
-    rally = RallyAPI::RallyRestJson.new(Rails.configuration.rally)
-    query = RallyAPI::RallyQuery.new()
-    query.type = "HierarchicalRequirement"
-    query.fetch = "Name,Iteration,PlanEstimate,ScheduleState,c_Product,FormattedID,StartDate,EndDate"
-    query.query_string = '(Iteration.Name = "%s")' % [@sprint]
-    query.order = "c_Product Asc"
-    @results = rally.find(query)     
+    rally = Rally.new
+    @results = rally.get_sprint_details(@sprint)   
 
     accepted_points = 0
     total_points = 0
@@ -37,11 +26,9 @@ class HandoutController < ApplicationController
     end
     @percent_completed = ((accepted_points/total_points) * 100).ceil.to_i
 
-
     @start_date = Date.parse(@results.first.Iteration.StartDate).strftime("%m/%d/%Y")
     @end_date = Time.parse(@results.first.Iteration.EndDate) - 1.days
-    @end_date = @end_date.strftime("%m/%d/%Y")
-    
+    @end_date = @end_date.strftime("%m/%d/%Y")    
     @devs = Employee.where(role_id: 1)
     @tpo = Employee.find_by role_id: 2
     @scrum_master = Employee.find_by role_id: 3

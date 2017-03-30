@@ -35,11 +35,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'hirb'
-gem 'rally_api'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'slim'
+gem 'hirb'
 gem 'jquery-tablesorter'
+gem 'rally_api'
+gem 'rubocop'
+gem 'slim'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
