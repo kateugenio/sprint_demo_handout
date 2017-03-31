@@ -1,8 +1,5 @@
 class Rally
   attr_accessor :sprint
-  #def initialize(sprint)
-    #@sprint = sprint
-  #end
 
   def get_all_sprints
     rally = RallyAPI::RallyRestJson.new(Rails.configuration.rally)

@@ -67,6 +67,7 @@ div.row#main_handout
               td #{us.Name}
 
     div.graph
+      p Paste image link of Iteration Cumulative Flow graph here
       = form_tag('/handout/graph_link', remote: true) do
         = text_field_tag "graphlink"
         = submit_tag 'Get Graph', class: 'graph-submit'      

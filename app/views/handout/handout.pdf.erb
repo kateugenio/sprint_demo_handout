@@ -69,7 +69,7 @@
     <% @results.each do |us| %>
       <% if us.ScheduleState != 'Accepted' && us.Name != 'Action Items' %>
         <% if us.Name.include?('[Unfinished]') %>
-          <% us.Name.remove!('Unfinished]') %>
+          <% us.Name.remove!('[Unfinished]') %>
         <% end %>
         <% if us.Name.include?('[Continued]') %>
           <% us.Name.remove!('[Continued]') %>

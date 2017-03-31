@@ -3,7 +3,7 @@ class HandoutController < ApplicationController
   require 'pp'
 
   def index 
-    rally = Rally.new()
+    rally = Rally.new
     @results = rally.get_all_sprints
   end
 
