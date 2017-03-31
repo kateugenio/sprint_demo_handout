@@ -17,6 +17,8 @@ class Employee < ApplicationRecord
     role_id == 3
   end
 
+  private
+
   def prevent_duplicate_tpo
     if Employee.where(role_id: '2').exists?
       errors[:base] << "Team Product Owner already exists. Please change the role or remove the current Team Product Owner to add new team member."
