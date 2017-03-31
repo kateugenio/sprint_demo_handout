@@ -5,13 +5,6 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "show_employee",
-               locals: {:employee => @employee}
-      end
-    end
   end
 
   def new
@@ -27,7 +20,6 @@ class EmployeesController < ApplicationController
     if @employee.save
       redirect_to @employee
     else
-      puts @employee.errors.full_messages
       render 'new'
     end
   end
