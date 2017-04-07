@@ -4,7 +4,11 @@ div.row
 
     h1#logo 
       strong SCRUMy
-
+    
+    - if flash[:invalid_sprint]
+    p#invalid_sprint 
+      = flash[:invalid_sprint]
+    
     div.col-md-5
     
     div.col-md-2
