@@ -12,8 +12,8 @@ class HandoutController < ApplicationController
     @graph_link = Graph.find(1)
 
     begin
-      rally = Rally.new
-      @results = rally.get_sprint_details(@sprint)
+      rally = Rally.new(@sprint)
+      @results = rally.get_sprint_details
 
       accepted_points = 0
       total_points = 0
