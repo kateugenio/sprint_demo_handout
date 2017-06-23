@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  get 'handout/index' 
+  get 'main/index'
+
+  get 'dashboard/index'
+
+  post 'dashboard/update_project' => 'dashboard#update'
+
+  get 'handout/index'
 
   get 'handout' => 'handout#show'
-  
+
   post 'handout/graph_link' => 'handout#graph_link'
 
-  root 'handout#index'
+  root 'main#index'
 
   resources :employees
 

@@ -1,27 +1,26 @@
+== render '/layouts/nav'
 div.row
 
   div.col-md-12#main_index
 
-    h1#logo 
-      strong SCRUMy
-    
+    h1#logo
+      strong Sprint Demo Agenda
+
     - if flash[:invalid_sprint]
-    p#invalid_sprint 
+    p#invalid_sprint
       = flash[:invalid_sprint]
-    
+
     div.col-md-5
-    
+
     div.col-md-2
       = form_tag("/handout", method: "get") do
-        div.form-group#sprint_select_form
+        div.form-group#sprint_select_fmrm
           = label_tag "select a sprint"
-          = select_tag "sprint_num", options_for_select(@results.map { |s| [s.Name, s.Name] }), class: "form-control"
+          div.input-field
+            = select_tag "sprint_num", options_for_select(@results.map { |s| [s.Name, s.Name] })
 
         p
           = submit_tag 'Create Demo Agenda', class: "btn btn-primary"
 
-    
-    div.col-md-5
 
-div.row#team_link
-  = link_to 'View/Edit Team Members', employees_path
+    div.col-md-5

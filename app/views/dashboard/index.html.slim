@@ -1,0 +1,61 @@
+== render 'layouts/nav'
+h1.dashboardTitle FA Trust Application Development Dashboard
+
+div.row style="padding: 100px"
+  div.col-md-12
+    ul.nav.nav-tabs role="tablist"
+      li.active role="presentation"
+        a href="#breaking_builds" aria-controls="breaking_builds" role="tab" data-toggle="tab" Team Backlog
+      li role="presentation"
+        a href="#projects" aria-controls="projects" role="tab" data-toggle="tab" All Other Projects
+    div.tab-content
+      div.tab-pane.active id="breaking_builds" role="tabpanel"
+        - @projects.each_with_index do |p, index|
+          - if p[0].name == "Breaking Builds"
+            div.panel.panel-primary
+              div.panel-heading #{p[0]}
+              div.panel-body
+              table.responsive-table.highlight.bordered
+                thead
+                  tr
+                    th ID
+                    th User Story
+                    th Points
+                    th Product
+                tbody
+                  - p.each do |pp|
+                    - pp.each do |ppp|
+                      tr
+                        td #{ppp.FormattedID}
+                        td #{ppp}
+                        td #{ppp.PlanEstimate}
+                        td #{ppp.Product}
+
+      div.tab-pane id="projects" role="tabpanel"
+        div.panel-group
+          - @projects.each_with_index do |p, index|
+            - if p[0].name != "Breaking Builds"
+              div.panel.panel-primary data-toggle="collapse" data-target=index style="overflow: auto"
+                div.panel-heading style="cursor: pointer"
+                  | #{p[0]}
+                  span.glyphicon.glyphicon-chevron-down style="margin-left: 10px;"
+
+                div.panel-collapse.collapse id=index
+                  div.panel-body
+                    table.responsive-table.highlight.bordered
+                      thead
+                        tr
+                          th ID
+                          th User Story
+                          th Action
+                      tbody
+                        - p.each do |pp|
+                          - pp.each do |ppp|
+                            tr
+                              td #{ppp.FormattedID}
+                              td #{ppp}
+                              td id=ppp.FormattedID
+                                div data-toggle="buttons"
+                                  label.addToBL.btn.btn-primary
+                                    input type="checkbox" autocomplete="off" Add To Team Backlog
+

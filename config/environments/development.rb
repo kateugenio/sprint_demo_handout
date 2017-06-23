@@ -52,5 +52,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+  #config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace, :project => Rails.application.secrets.rally_project}
+  config.rally = {:base_url => "https://rally1.rallydev.com/slm", :api_key => Rails.application.secrets.rally_api_key, :workspace => Rails.application.secrets.rally_workspace}
 end

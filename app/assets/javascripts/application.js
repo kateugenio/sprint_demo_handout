@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-tablesorter
 //= require bootstrap
+//= require materialize
 //= require jquery_ujs
-//= require turbolinks
+//= require notify
 //= require_tree .

@@ -13,13 +13,20 @@
  */
 
 .alwaysbreak {
-  page-break-before: always; 
+  page-break-before: always;
+}
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
 }
 
+@import "main";
 @import "handout";
 @import "employees";
+@import "dashboard";
 @import "bootstrap-sprockets";
-@import "bootstrap"
+@import "bootstrap";
+@import "materialize"
 
 /*
  *= require jquery-tablesorter/bootstrap

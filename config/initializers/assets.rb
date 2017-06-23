@@ -13,4 +13,6 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( jquery-latest.js )
 # Rails.application.config.assets.precompile += %w( jquery.tablesorter.js )
 Rails.application.config.assets.precompile += %w( graph.js )
+Rails.application.config.assets.precompile += %w( dashboard.js )
+#Rails.application.config.assets.precompile += %w( handout.js )
 #Rails.application.config.assets.precompile += %w( handout.css )

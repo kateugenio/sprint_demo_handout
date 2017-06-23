@@ -1,18 +1,19 @@
+== render '/layouts/nav'
 div.row#main_handout
   div.col-md-2
 
   div.col-md-8#handout-main
     h1.handout-title.handout-heading Sprint Review Agenda
-    legend    
-       
+    legend
+
     div.row.handout-intro
       div.col-md-4.handout-metrics
-        p.handout-heading 
-        span.label-key Sprint Timebox 
+        p.handout-heading
+        span.label-key Sprint Timebox
         span.label-value #{@start_date} - #{@end_date}
-        p.handout-heading  
+        p.handout-heading
         span.label-key Percentage Completed
-        span.label-value #{@percent_completed}%  
+        span.label-value #{@percent_completed}%
       div.col-md-8.handout-team
         p
           span.label-key Developers
@@ -43,13 +44,13 @@ div.row#main_handout
               - us.Name.remove!('[Unfinished]')
             - if us.Name.include?('[Continued]')
               - us.Name.remove!('[Continued]')
-            tr.us_row     
+            tr.us_row
               td #{us.c_Product}
               td #{us.Name}
 
     div.panel.panel-primary
       div.panel-heading Work In Progress
-      div.panel-body    
+      div.panel-body
       table.table.table-bordered.table-condensed.in_progress
         thead
           tr
@@ -70,14 +71,14 @@ div.row#main_handout
       p Paste image link of Iteration Cumulative Flow graph here
       = form_tag('/handout/graph_link', remote: true) do
         = text_field_tag "graphlink"
-        = submit_tag 'Get Graph', class: 'graph-submit'      
-      
+        = submit_tag 'Get Graph', class: 'graph-submit'
+
       div
         img#graph-img
-   
+
     div#pdf
       = link_to 'Export to PDF', handout_path(:sprint_num => @sprint, :format => :pdf), class: "btn btn-primary"
-    
+
     p#home
-      = link_to 'Home', root_path 
+      = link_to 'Home', root_path
   div.col-md-2
